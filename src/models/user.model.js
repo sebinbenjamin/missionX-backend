@@ -34,4 +34,29 @@ const getPassword = (email) => {
   });
 };
 
-module.exports = { registerUser: register, getPassword };
+const updateBLOB = (fileBuffer, mimeType) => {
+  return pool.then(async (connection) => {
+    const [
+      rows,
+    ] = await connection.execute(
+      'INSERT INTO `demo`.`userImages` (`image`, `mimeType`) VALUES (?, ?);',
+      [fileBuffer, mimeType],
+    );
+    return rows;
+  });
+};
+
+const getUserProfilePic = (id) => {
+  return pool.then(async (connection) => {
+    const [
+      rows,
+    ] = await connection.execute('SELECT * FROM demo.userImages WHERE id = ?;',
+    [id]
+    );
+    return rows;
+  });
+};
+
+
+
+module.exports = { registerUser: register, getPassword, updateBLOB, getUserProfilePic };

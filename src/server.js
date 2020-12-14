@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 // Loads environment variables from a '.env' file stored in the project root
 // and makes it available in 'process.env' object
@@ -15,6 +16,7 @@ const userRouter = require('./routes/user.routes');
 // Init express
 const app = express();
 app.use(express.json());
+app.use(cors()); // https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/
 
 // A simple Logger middleware
 app.use(simpleLogger);
