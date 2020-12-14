@@ -33,6 +33,7 @@ We have the following structure currently.
         }
         
 7. Run `git push heroku` to deploy changes to Heroku whenever required.
+8. Run `heroku logs --tail` to debug any issues.
 
 ## References
 
