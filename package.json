@@ -1,0 +1,27 @@
+{
+  "name": "mission-x",
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
+  "description": "Mission-X project sample backend structure",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "serve": "nodemon src/server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "backend"
+  ],
+  "author": "Sebin Benjamin",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5"
+  }
+}
