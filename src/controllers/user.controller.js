@@ -8,9 +8,11 @@ const {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+  
   // Gets the password for a particular email id.
   const queryResult = await getPassword(email);
   const jsonResult = resultToJSON(queryResult);
+  
   if (jsonResult.length === 0) {
     res.status(401).send('Could not find a user with the provided email id');
   } else {
@@ -44,7 +46,7 @@ const resetPassword = async (req, res) => {
 };
 
 const getProfilePic = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const queryResult = await getUserProfilePic(id);
   const jsonResult = resultToJSON(queryResult);
 
