@@ -20,6 +20,12 @@ const simpleLogger = (req, res, next) => {
   next();
 };
 
+/**
+ * Cross-Origin Resource Sharing (CORS) is a security mechanism 
+ * which describes which origins (servers/clients) are permitted 
+ * to read information. It is basically an access control mechanism.
+ * This middleware basically allows everything to simplify things for the demo.
+*/
 const allowCORS = function(req, res, next) {
   const origin = req.get('origin');
   res.header("Access-Control-Allow-Origin", origin);

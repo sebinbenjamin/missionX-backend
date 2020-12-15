@@ -19,6 +19,7 @@ app.use(express.json());
 
 // https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/
 app.use(cors()); 
+app.all('/*', allowCORS); // A middleware to allow all CORS requests
 
 // A simple Logger middleware
 app.use(simpleLogger);

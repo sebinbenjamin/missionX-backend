@@ -10,6 +10,13 @@ const pool = getPool();
   PRIMARY KEY (`id`));
 */
 
+// CREATE TABLE `userImages` (
+//   `id` int NOT NULL AUTO_INCREMENT,
+//   `image` longblob NOT NULL,
+//   `mimeType` varchar(45) NOT NULL,
+//   PRIMARY KEY (`id`)
+// )
+
 const register = (name, email, passwordHash) => {
   return pool.then(async (connection) => {
     const [
@@ -34,13 +41,13 @@ const getPassword = (email) => {
   });
 };
 
-const updateBLOB = (fileBuffer, mimeType) => {
+const updateBLOB = (fileBase64String, mimeType) => {
   return pool.then(async (connection) => {
     const [
       rows,
     ] = await connection.execute(
       'INSERT INTO `demo`.`userImages` (`image`, `mimeType`) VALUES (?, ?);',
-      [fileBuffer, mimeType],
+      [fileBase64String, mimeType],
     );
     return rows;
   });

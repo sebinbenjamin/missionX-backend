@@ -29,7 +29,7 @@ We have the following structure currently.
 
 3.  Run `heroku login` to authenticate the CLI tool
 4.  Go to the React project folder and type `heroku create missionx-demo-app-name` command.
-5.  Check to see if the Heroku remote is added `git remote -v`. If not, run `heroku git:remote -a missionx-demo-app-name` to add a remote for heroku.
+5.  Check to see if the Heroku remote is added using `git remote -v`. If not, run `heroku git:remote -a missionx-demo-app-name` to add a remote for heroku.
 6.  Add node version to `package.json`.
         "engines": {
           "node": "12.x"

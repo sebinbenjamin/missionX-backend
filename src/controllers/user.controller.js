@@ -8,11 +8,11 @@ const {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  
+
   // Gets the password for a particular email id.
   const queryResult = await getPassword(email);
   const jsonResult = resultToJSON(queryResult);
-  
+
   if (jsonResult.length === 0) {
     res.status(401).send('Could not find a user with the provided email id');
   } else {
@@ -45,6 +45,7 @@ const resetPassword = async (req, res) => {
   }
 };
 
+// (Base64 string + mimeType) => Construct a Image URI => Returned to API called by React frontend
 const getProfilePic = async (req, res) => {
   const { id } = req.params;
   const queryResult = await getUserProfilePic(id);
@@ -52,20 +53,23 @@ const getProfilePic = async (req, res) => {
 
   const { image, mimeType } = jsonResult[0];
   const encoding = 'base64';
-  // data:[<mime type>][;charset=<charset>][;base64],<encoded data>
+  // Data URIs - https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
+  // Structure of the URI || data:[<mime type>][;charset=<charset>][;base64],<encoded data>
+  // Example              || data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABNwAAAKmCAYAA...
   const uri = `data:${mimeType};${encoding},${image}`;
-  res.status(200).send({ dataURI :  uri});
+  res.status(200).send({ dataURI: uri });
 };
 
+// Multer => a Buffer => Base64 String => Inserted into DB
 const uploadProfilePic = async (req, res) => {
-  const { buffer, mimetype } = req.file;
-  if (!buffer) {
+  const { buffer, mimetype } = req.file; // Multer puts together the file key with a Array Buffer.
+    if (!buffer) {
     const error = new Error('Error uploading file');
     res.status = 400;
     return next(error);
   }
 
-  // Everything went fine
+  // Stores the base64 encoded string to the DB
   const queryResult = await updateBLOB(buffer.toString('base64'), mimetype);
   res.status(200).json(queryResult);
 };

@@ -24,6 +24,8 @@ router.post('/register', register);
 router.post('/reset', resetPassword);
 
 // /api/user + /profilePic
+// Here the multer middleware is injected to look for a form field named 'profilePic'
+// It takes it up and makes it available in the req.file object in the controller. 
 router.post('/profilePic', uploadMemory.single('profilePic'), uploadProfilePic);
 router.get('/profilePic/:id', getProfilePic);
 
