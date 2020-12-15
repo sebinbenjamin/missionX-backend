@@ -24,7 +24,7 @@ router.post('/register', register);
 router.post('/reset', resetPassword);
 
 // /api/user + /profilePic
-router.put('/profilePic', uploadMemory.single('profilePic'), uploadProfilePic);
+router.post('/profilePic', uploadMemory.single('profilePic'), uploadProfilePic);
 router.get('/profilePic', getProfilePic);
 
 module.exports = router;

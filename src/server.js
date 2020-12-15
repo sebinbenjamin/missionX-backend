@@ -9,14 +9,17 @@ require('dotenv').config();
 const { port } = require('./config');
 
 const { connect } = require('./db');
-const { errorHandler, simpleLogger } = require('./middlewares');
+const { errorHandler, simpleLogger, allowCORS } = require('./middlewares');
 const projectRouter = require('./routes/project.routes');
 const userRouter = require('./routes/user.routes');
 
 // Init express
 const app = express();
 app.use(express.json());
-app.use(cors()); // https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/
+
+// https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/
+app.use(cors()); 
+app.all('/*', allowCORS);
 
 // A simple Logger middleware
 app.use(simpleLogger);
