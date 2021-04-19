@@ -8,8 +8,11 @@ require('dotenv').config();
 
 const { port } = require('./config');
 
+// Middleware functions to be used
 const { connect } = require('./db');
 const { errorHandler, simpleLogger, allowCORS } = require('./middlewares');
+
+// Routers to be used
 const projectRouter = require('./routes/project.routes');
 const userRouter = require('./routes/user.routes');
 
