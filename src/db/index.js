@@ -23,6 +23,7 @@ const getPool = async () => {
   if (isConnected) return pool;
 };
 
+// Logs to know the status of the connection
 const setListeners = (pool) => {
   // Event when a new connection is made within the pool
   pool.on('enqueue', () => {

@@ -6,7 +6,9 @@ const cors = require('cors');
 // https://www.npmjs.com/package/dotenv
 require('dotenv').config();
 
+// Actually means, import the ./config/index.js file.
 const { port } = require('./config');
+// const { port } = require('./config/index.js');
 
 // Middleware functions to be used
 const { connect } = require('./db');
@@ -18,8 +20,10 @@ const userRouter = require('./routes/user.routes');
 
 // Init express
 const app = express();
+// Inbuilt json middleware
 app.use(express.json());
 
+// CORS Middleware
 // https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/
 app.use(cors()); 
 app.all('/*', allowCORS); // A middleware to allow all CORS requests

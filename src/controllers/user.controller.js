@@ -6,10 +6,12 @@ const {
   getUserProfilePic,
 } = require('../models/user.model');
 
+// The login controller which is called when we localhost:4000/api/user/login
 const login = async (req, res) => {
   const { email, password } = req.body;
 
   // Gets the password for a particular email id.
+  // getPassword here is running the DB query and returning the result to the controller here.
   const queryResult = await getPassword(email);
   const jsonResult = resultToJSON(queryResult);
 
