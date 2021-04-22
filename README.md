@@ -19,7 +19,7 @@ We have the following structure currently.
 |  |-models
 ```
 
-## Heroku Deployment Steps
+## Heroku Deployment Steps (Optional)
 
 1.  Create an account with https://www.heroku.com/
 2.  Download and install the Heroku CLI https://devcenter.heroku.com/articles/heroku-cli#download-and-install
