@@ -17,6 +17,7 @@ const { errorHandler, simpleLogger, allowCORS } = require('./middlewares');
 // Routers to be used
 const projectRouter = require('./routes/project.routes');
 const userRouter = require('./routes/user.routes');
+const countryRouter = require('./routes/country.routes');
 
 // Init express
 const app = express();
@@ -34,6 +35,7 @@ app.use(simpleLogger);
 // Register Routers
 app.use('/api/project', projectRouter);
 app.use('/api/user', userRouter);
+app.use('/api/country', countryRouter);
 
 // 404 error
 app.all('*', (req, res, next) => {
